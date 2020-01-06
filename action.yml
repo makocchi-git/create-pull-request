@@ -34,6 +34,8 @@ inputs:
     description: 'The pull request base branch.'
   branch-suffix:
     description: 'The branch suffix type.'
+  repository:
+    description: 'The name of target repository (owner/repo).'
 outputs:
   pr_number:
     description: 'The pull request number'
