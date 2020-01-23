@@ -1012,19 +1012,22 @@ async function run() {
     core.debug(`src: ${src}`);
 
     // Setup Python from the tool cache
-    setupPython("3.8.0", "x64");
+    setupPython("3.8.x", "x64");
 
     // Install requirements
     await exec.exec("pip", [
       "install",
       "--requirement",
-      `${src}/requirements.txt`
+      `${src}/requirements.txt`,
+      "--no-index",
+      `--find-links=${__dirname}/vendor`
     ]);
 
     // Fetch action inputs
     const inputs = {
       token: core.getInput("token"),
       repository: core.getInput("repository"),
+      path: core.getInput("path"),
       commitMessage: core.getInput("commit-message"),
       committer: core.getInput("committer"),
       author: core.getInput("author"),
@@ -1045,7 +1048,11 @@ async function run() {
 
     // Set environment variables from inputs.
     if (inputs.token) process.env.GITHUB_TOKEN = inputs.token;
+<<<<<<< HEAD
     if (inputs.repository) process.env.GITHUB_REPOSITORY = inputs.repository;
+=======
+    if (inputs.path) process.env.CPR_PATH = inputs.path;
+>>>>>>> v2.2.0m
     if (inputs.commitMessage) process.env.CPR_COMMIT_MESSAGE = inputs.commitMessage;
     if (inputs.committer) process.env.CPR_COMMITTER = inputs.committer;
     if (inputs.author) process.env.CPR_AUTHOR = inputs.author;
