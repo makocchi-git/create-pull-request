@@ -1048,11 +1048,8 @@ async function run() {
 
     // Set environment variables from inputs.
     if (inputs.token) process.env.GITHUB_TOKEN = inputs.token;
-<<<<<<< HEAD
     if (inputs.repository) process.env.GITHUB_REPOSITORY = inputs.repository;
-=======
     if (inputs.path) process.env.CPR_PATH = inputs.path;
->>>>>>> v2.2.0m
     if (inputs.commitMessage) process.env.CPR_COMMIT_MESSAGE = inputs.commitMessage;
     if (inputs.committer) process.env.CPR_COMMITTER = inputs.committer;
     if (inputs.author) process.env.CPR_AUTHOR = inputs.author;
